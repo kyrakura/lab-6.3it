@@ -19,7 +19,7 @@ void Print(int a[], const int size) {
     cout << endl;
 }
 
-int Sum(int a[], const int size) {
+int SumOne(int a[], const int size) {
     int sum = 0;
     for (int i = 0; i < size; i++) {
         if (a[i] % 2 == 0) {
@@ -28,6 +28,18 @@ int Sum(int a[], const int size) {
     }
     return sum;
 }
+
+template <typename T>
+T SumTwo(T a[], const int size) {
+    T sum = 0;
+    for (int i = 0; i < size; i++) {
+        if (a[i] % 2 == 0) {
+            sum += a[i];
+        }
+    }
+    return sum;
+}
+
 
 int main() {
     SetConsoleOutputCP(1251);
@@ -39,11 +51,23 @@ int main() {
 
     Create(a, N, Low, High);
 
-    cout << "Початковий масив: ";
+    cout << "Початковий масив(1): ";
     Print(a, N);
 
-    int sumEven = Sum(a, N);
-    cout << "Сума парних елементів: " << sumEven << endl;
+    int sum = SumOne(a, N);
+    cout << "Сума парних елементів(1): " << sum << endl;
+
+    int b[N];
+    int LowTwo = -11;
+    int HighTwo = 13;
+
+    Create(b, N, LowTwo, HighTwo);
+
+    cout << "Початковий масив(2): ";
+    Print(b, N);
+
+    int sumTwo = SumTwo(b, N);
+    cout << "Сума парних елементів(2): " << sumTwo << endl;
 
     return 0;
 }
